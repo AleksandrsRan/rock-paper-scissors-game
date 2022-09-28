@@ -1,9 +1,11 @@
+from importlib.resources import contents
 from random import random
 
 import random
 turns = ['rock', 'paper', 'scissors']
 human_turns = []
 computer_turns = []
+win_history = []
 
 
 def program():
@@ -16,16 +18,23 @@ def program():
     human_turns .append (human_turn)
     computer_turns .append (computer_turn)
 
+
     if human_turn == computer_turn:
         print('Draw!')
+        win_history .append ('Draw!')
     elif human_turn == 'rock' and computer_turn == 'scissors':
         print('You win!')
+        win_history .append ('You win!')
     elif human_turn == 'paper' and computer_turn == 'rock':
-        print('You wins')
+        print('You win!')
+        win_history .append ('You win!')
     elif human_turn == 'scissors' and computer_turn == 'paper':
         print('You win!')
+        win_history .append ('You win!')
     else:
-        print('You lose')
+        print('You lose!')
+        win_history .append ('You lose!')
+    
 flag = True
 while flag:
     program()
@@ -33,6 +42,7 @@ while flag:
 
 
 print ('You played', len(human_turns), 'times')
+print ('You won', win_history == 'You win!', 'times')
 print (human_turns)
 print (computer_turns)
 print ('The game will now end.')
